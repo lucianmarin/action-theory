@@ -132,6 +132,42 @@ threshold decoherence/collapse term `Γ_F` when the freedom rank
 > observed low-energy laws (QM + GR + SM) and simultaneously predict
 > something new?*
 
+### 3.7 Purity architecture (research proposal)
+A companion paper, `docs/research-purity.md`, proposes tightening the Layer I
+formalism into a **pure functional calculus of actions**:
+
+```
+𝒰 = (𝒱, 𝒜, ∘, id, 𝒞)
+```
+
+`𝒱` are values, `𝒜` are pure actions `a : A → B`, `∘` is composition, `id` is
+identity, and `𝒞` is the admissibility/type structure. A history is an
+immutable composition `h = aₙ∘…∘a₂∘a₁` — there is no mutable state; every new
+state is a new value produced by evaluating another pure action. Matter and
+energy stop being primitives and become **pure derived data**:
+
+```
+M(h) = MatterView(h)
+E(h) = EnergyView(h)
+```
+
+governed by one hypothesis:
+
+```
+pure action → history → derived data → observable physics
+```
+
+Observation, measurement, and sampling move into an explicit **effect
+layer** so they can't silently mutate the pure core. The reformulation
+reinterprets — not replaces — the existing vocabulary: Constraint becomes a
+typing/predicate rule, Freedom becomes the structure of admissible
+continuation functions, and a Roadblock becomes an empty continuation. The
+proposed first milestone, **M0**, contains only values, typed pure actions,
+composition, constraints, histories, and observational equivalence — no
+spacetime, particles, energy, or complex amplitudes.
+*Status: research proposal, unimplemented; see `docs/research-purity.md`
+for the full calculus, milestones, and falsification criteria.*
+
 ---
 
 ## 4. Layer II — Philosophy: Action as the Category of Being
@@ -261,6 +297,7 @@ derivation; do not insert physics or sociology and call it a consequence.*
 | Layer | Claim strength | Notes |
 |---|---|---|
 | I. Physics | speculative working theory | incomplete until the §9 derivations succeed |
+| I.7 Purity architecture | research proposal | recasts Layer I as a pure functional calculus (§3.7); milestones unmet — see `docs/research-purity.md` |
 | II. Philosophy | interpretive | a coherent reading of Layer I, not a proof |
 | III. Economics | heuristic translation | converges with praxeology; not derived from `𝔄` |
 | IV. Human activity | meta-framework | useful lens for resilience & risk; not physics |
@@ -286,12 +323,21 @@ macroscopic dimensions · gauge group `SU(3)×SU(2)×U(1)` · particle spectrum 
 freedom geometry `G_F` · nonzero Roadblock correction · one quantitative
 prediction distinguishable from QM and GR.
 
+**Parallel foundations target (§3.7)** — build **M0**, a pure action
+calculus with only composition, identity, constraints, histories, and
+observational equivalence (no spacetime, particles, energy, or amplitudes),
+then derive matter and energy as projections (`MatterView`, `EnergyView`)
+before layering M1's amplitudes on top. Full phase plan (A–I) and
+falsification criteria in `docs/research-purity.md`.
+
 ```
 action-theory/
-├── README.md                 ← this file
-├── docs/research-handoff.md  ← original physics handoff
-├── models/model_m1.py        ← minimal finite action model (toy simulation)
-└── notes/                    ← layer translations (philosophy, economics, society)
+├── README.md                       ← this file
+├── docs/research-handoff.md        ← original physics handoff
+├── docs/research-purity.md         ← pure-functional reformulation proposal (§3.7)
+├── docs/mass-energy-equivalence.md ← E = mc² derivation within CFR
+├── models/model_m1.py              ← minimal finite action model (toy simulation)
+└── notes/                          ← layer translations (philosophy, economics, society)
 ```
 
 ---
@@ -311,6 +357,13 @@ energy; energy is the ledger of admissible action patterns.
 **Do actions create new mass and energy?**
 No. Actions *constitute* mass and energy; transitions reconfigure stable
 patterns while effective invariants balance.
+
+**Is the universe literally a computer program?**
+No. The purity reformulation (§3.7) borrows structural properties of pure
+functional programming — immutability, referential transparency, explicit
+effects — as a precise language for stating the ontology, not a claim that
+reality runs on hardware. The analogy stops where physical constants and
+dynamics begin.
 
 **Is this game theory?**
 No. It is a game tree without players, payoffs, or preferences. Game theory
