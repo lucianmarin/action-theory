@@ -1,19 +1,27 @@
 # Action Theory
 
 **Constraint – Freedom – Roadblock (CFR)**
-*An action-first framework for physics, philosophy, economics, and human activity.*
+*A framework in which action is fundamental. CFR is the vocabulary —
+Constraint, Freedom, Roadblock — for describing how fundamental actions
+compose, read across physics, philosophy, economics, and human activity.*
 
 > **Research status:** speculative working theory — not established physics.
 > The physics layer is under active development. The philosophical, economic,
 > and human-systems layers are **interpretive translations** of the same
 > primitive vocabulary, not derivations. Every claim in this repository is
 > classified as *derived, assumed, effective, predicted,* or *heuristic* (§8).
+>
+> **Companion documents:** `docs/research-manuscript.md` — Pure Functional
+> Dynamics, the worked functional-universe calculus (theorems + predictions
+> P-1…P-8); `docs/research-purity.md` (purity reformulation proposal);
+> `docs/mass-energy-equivalence.md` (E = mc² derivation); `notes/` (layer
+> translations); `models/` (M0–M5 computational scaffold). Full map in §9.
 
 ---
 
 ## Contents
 
-1. [One Primitive: Action](#1-one-primitive-action)
+1. [One Primitive: Action (and Action Theory vs. Simulation Theory)](#1-one-primitive-action)
 2. [The Three Laws of the Framework](#2-the-three-laws-of-the-framework)
 3. [Layer I — Physics: Action as the Substance of Reality](#3-layer-i--physics-action-as-the-substance-of-reality)
 4. [Layer II — Philosophy: Action as the Category of Being](#4-layer-ii--philosophy-action-as-the-category-of-being)
@@ -50,9 +58,51 @@ A **state** is an equivalence class of histories with equivalent future
 possibilities: `h₁ ~ h₂  ⟺  N(h₁) ≅ N(h₂)`, therefore `state = [h]`.
 A persistent object is a stable equivalence class of action histories.
 
+### 1.1 Action Theory vs. Simulation Theory
+
+Simulation Theory says reality is a computation — a running simulation — and
+usually pictures the simulation rendering a world of *stuff*: particles,
+fields, a stage of animated objects. Action Theory shares the computational
+instinct and inverts what is being computed. There is no stage and nothing is
+rendered; what the simulation *is* is elementary actions and their
+composition. If reality is a simulation, then action being fundamental
+describes how the simulation works:
+
+| Simulation-Theory concept | Action Theory reading |
+|---|---|
+| The program's rules | Constraint `C` — the admissibility structure defining `N(h)` |
+| The sim's branching / choice points | Freedom `F(h) = dim N(h)` — how many next actions remain |
+| A branch the sim cannot continue | Roadblock — `N(h) = ∅`, a channel of the simulation halts |
+| Rendering a world from state | stable coarse-grained action patterns ≈ matter |
+| The simulation clock | emergent time — the causal order of action composition |
+| Spawning entities | persisting action structures (guarded recursions, particles) |
+| Loading/mutating state | absent — history is immutable; each new step is a new history |
+
+So the two views are not rivals over *whether* reality is computation; they
+disagree over *what* is computed. Most simulation talk animates a stage full
+of objects; Action Theory says the performance is all there is — the sim
+computes which actions may follow which actions, and matter, space, time, and
+energy are what the stable patterns of that running computation look like from
+inside. Measurement is not a query from outside: it is the simulation forcing
+a part of itself — the universe is its own interpreter — which is why no
+external simulator is required.
+
+`docs/research-manuscript.md` makes this literal. It defines an action
+calculus Λ_A in which the universe is a single closed term, every reduction
+step is an elementary event, superposition is an unevaluated thunk,
+entanglement is thunk sharing, and measurement is forcing. On that reading,
+Action Theory answers the question Simulation Theory leaves open: *the
+simulation computes actions — constraints set its rules, freedom is its
+branching, roadblocks are its halt states.*
+
 ---
 
 ## 2. The Three Laws of the Framework
+
+> CFR is not a theory of three kinds of thing. Its single primitive is action;
+> Constraint, Freedom, and Roadblock are just the three words the framework
+> uses to say how actions compose — they add nothing to reality beyond the
+> claim that action is fundamental.
 
 For a partial action history `h`, let the set of admissible continuations be
 
@@ -167,6 +217,19 @@ composition, constraints, histories, and observational equivalence — no
 spacetime, particles, energy, or complex amplitudes.
 *Status: research proposal, unimplemented; see `docs/research-purity.md`
 for the full calculus, milestones, and falsification criteria.*
+
+A fully worked descendant of this proposal is `docs/research-manuscript.md` —
+**Pure Functional Dynamics (PFD)**. It specifies an explicit pure action
+calculus (Λ_A) and derives, *inside that calculus*: time as reduction order,
+causality, a universal propagation bound, observer-independence (confluence),
+energy conservation, mass as redirection cost, gauge symmetry with massless
+mediators, particles as guarded recursion fixed points, and gravity as
+evaluation-cost geometry. It also stakes falsifiable predictions (P-1…P-8),
+including **non-confluence noise** (state-dependent deviations from unitary
+evolution at high complexity) and **thunk gravity** (a dark-matter candidate:
+unforced computation gravitates). *Status: speculative manuscript — its
+theorems are internal to the calculus, and the physical postulates (P1–P6)
+remain unverified.*
 
 ---
 
@@ -298,6 +361,7 @@ derivation; do not insert physics or sociology and call it a consequence.*
 |---|---|---|
 | I. Physics | speculative working theory | incomplete until the §9 derivations succeed |
 | I.7 Purity architecture | research proposal | recasts Layer I as a pure functional calculus (§3.7); milestones unmet — see `docs/research-purity.md` |
+| I.8 PFD manuscript | speculative manuscript | `docs/research-manuscript.md`: theorems inside its calculus; postulates P1–P6 unverified; predictions P-1…P-8 staked |
 | II. Philosophy | interpretive | a coherent reading of Layer I, not a proof |
 | III. Economics | heuristic translation | converges with praxeology; not derived from `𝔄` |
 | IV. Human activity | meta-framework | useful lens for resilience & risk; not physics |
@@ -311,11 +375,17 @@ algebra does not legislate sociology. The extended layers borrow the
 
 ## 9. Research Roadmap
 
-**First computational target** — build the smallest finite action category
-`(𝔄, ∘, C, Z, G)` (see `models/model_m1.py`) and check, without inserting
-spacetime or particles, whether it produces: quantum interference,
-entanglement, gauge invariance, causal structure, stable excitations, and
-Roadblocks.
+**First computational target** — verify, without inserting spacetime or
+particles by hand, that the smallest finite action category
+`(𝔄, ∘, C, Z, G)` produces quantum interference, entanglement, gauge
+invariance, causal structure, stable excitations, and Roadblocks. The
+scaffolding ladder is in `models/`:
+`model_m0.py` (pure action calculus) → `model_m1.py` (complex amplitudes,
+path sums) → `model_m2.py` (freedom geometry `G_AB`, `V_F`) →
+`model_m3.py` (emergent causal structure) → `model_m4.py` (derived matter &
+energy views) → `model_m5.py` (gravity, gauge fields, Standard Model limits);
+`predictions.py` encodes the candidate testable deviations. **All are
+placeholders, not verified physics.**
 
 **Required derivations before Layer I counts as physics:**
 complex amplitudes & Born rule · Lorentzian signature (−+++) · four
@@ -323,21 +393,35 @@ macroscopic dimensions · gauge group `SU(3)×SU(2)×U(1)` · particle spectrum 
 freedom geometry `G_F` · nonzero Roadblock correction · one quantitative
 prediction distinguishable from QM and GR.
 
-**Parallel foundations target (§3.7)** — build **M0**, a pure action
+**Parallel foundations target (§3.7, `docs/research-purity.md`) — build
+M0**, a pure action
 calculus with only composition, identity, constraints, histories, and
 observational equivalence (no spacetime, particles, energy, or amplitudes),
 then derive matter and energy as projections (`MatterView`, `EnergyView`)
 before layering M1's amplitudes on top. Full phase plan (A–I) and
-falsification criteria in `docs/research-purity.md`.
+falsification criteria in `docs/research-purity.md`; the worked calculus and
+its predictions are developed in `docs/research-manuscript.md`.
 
 ```
 action-theory/
 ├── README.md                       ← this file
-├── docs/research-handoff.md        ← original physics handoff
-├── docs/research-purity.md         ← pure-functional reformulation proposal (§3.7)
-├── docs/mass-energy-equivalence.md ← E = mc² derivation within CFR
-├── models/model_m1.py              ← minimal finite action model (toy simulation)
-└── notes/                          ← layer translations (philosophy, economics, society)
+├── docs/
+│   ├── research-handoff.md         ← original physics handoff (CFR physics)
+│   ├── research-manuscript.md      ← Pure Functional Dynamics: worked action calculus (Λ_A) with theorems & predictions P-1…P-8
+│   ├── research-purity.md          ← pure-functional reformulation proposal (§3.7)
+│   └── mass-energy-equivalence.md  ← E = mc² derivation within CFR
+├── models/                         ← M0–M5 computational scaffold + predictions
+│   ├── model_m0.py                pure action calculus (no spacetime/amplitudes)
+│   ├── model_m1.py                complex amplitudes & path sums
+│   ├── model_m2.py                continuation geometry (G_AB, V_F)
+│   ├── model_m3.py                emergent spacetime / causal order
+│   ├── model_m4.py                derived matter & energy views
+│   ├── model_m5.py                gravity, gauge fields, Standard Model limits
+│   └── predictions.py             candidate testable CFR deviations
+└── notes/                          ← layer translations
+    ├── cfr-philosophy.md          Layer II: being is stable doing
+    ├── cfr-economics.md           Layer III: action as the unit of value
+    └── cfr-society.md             Layer IV: action as the unit of progress
 ```
 
 ---
@@ -358,8 +442,17 @@ energy; energy is the ledger of admissible action patterns.
 No. Actions *constitute* mass and energy; transitions reconfigure stable
 patterns while effective invariants balance.
 
+**Is this just Simulation Theory?**
+No — and it partly agrees. Simulation Theory claims reality is a computation;
+Action Theory says that if so, what is being computed is action, not stuff
+(§1.1). CFR describes how such a computation would run: constraints are its
+rules, freedom is its branching, roadblocks are its halt states. Unlike most
+simulation stories, no external simulator is required — the universe computes
+itself into being.
+
 **Is the universe literally a computer program?**
-No. The purity reformulation (§3.7) borrows structural properties of pure
+No. The purity reformulation (§3.7) and the PFD manuscript
+(`docs/research-manuscript.md`) borrow structural properties of pure
 functional programming — immutability, referential transparency, explicit
 effects — as a precise language for stating the ontology, not a claim that
 reality runs on hardware. The analogy stops where physical constants and
